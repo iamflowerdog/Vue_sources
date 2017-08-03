@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MrYanG</title>
+</head>
+<body>
+
+    <ul class="test">
+    </ul>
+
+<script type="text/javascript">
+
+    /*
+        1. docFragment 是一个对空文档片段 DocumentFragment 对象的引用。
+        2. DocumentFragments 是DOM节点，他不是DOM树的一部分
+        3. 用法
+            1. 创建空文档片段 `document.createDocumentFragment()` 或者 `new DocumentFragment()`
+            2. 向文档片段添加元素
+            3. 将文档碎片插入页面真实DOM元素中，让浏览器显示
+     */
+
+    let frag = new DocumentFragment();
+
+    let ul = document.getElementsByClassName('test')[0];
+
+    const browserList = [
+        'IE',
+        'firefox',
+        'Chrome',
+        'Safari'
+    ];
+
+    browserList.forEach(function (T) {
+        let li = document.createElement('li');
+        li.textContent = T;
+        frag.appendChild(li);
+        ul.appendChild(frag);
+    });
+
+    ul.appendChild(frag);
+
+
+
+</script>
+</body>
+</html>
