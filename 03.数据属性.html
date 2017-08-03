@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MrYanG</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    let obj = {
+        _book: "interstellar",
+        year: 2014,
+        author: "Mr.YanG"
+    };
+
+    Object.defineProperty(obj, 'year', {
+        configurable: true,
+        enumerable: true,
+        writable: false,
+        value: 2015
+    });
+
+    console.log(obj); //Object {_book: "interstellar", year: 2015}
+
+    obj.year = 1998;
+
+    console.log(obj.year); //  obj对象里面的 'year' 数据属性 writable: false, 所以返回值2015
+
+    for (x in obj) {
+        console.log(x, obj[x]); // _book year
+    }
+
+    Object.defineProperty(obj, 'year', {
+        enumerable: false
+    });
+
+    for (x in obj) {
+        console.log(x, obj[x]); // _book  year 的数据属性的行为特性 enumerable 被修改为false
+    }
+
+    console.log(delete obj.year); // true
+
+    Object.defineProperty(obj, "author", {
+        configurable: false
+    });
+
+    console.log(delete obj.author); //false author 的行为特性 configurable 被修改为false 所以不可以再修改和删除
+
+    console.log(obj);
+
+    obj.author = "flowerDog";
+
+    console.log(obj.author); // configurable 只是修改属性的特性 和 修改属性值无关
+
+    Object.defineProperty(obj, "author", {
+        configurable: true // 抛出异常 因为可配置属性在被修改为 false之后，就不能再重新配置了
+    })
+
+
+
+
+</script>
+</body>
+</html>

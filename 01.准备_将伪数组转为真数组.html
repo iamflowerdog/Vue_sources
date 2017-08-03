@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MrYanG</title>
+</head>
+<body>
+
+    <ul class="test">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+<script type="text/javascript">
+
+    /*
+        ## 将伪数组转换为真数组
+            1. 将伪数组转换为真数组
+            2. 得到的伪数组有 lis 继承节点属性的方法 item()
+            3. 利用 [].slice 返回slice函数对象本身 等同于 Array.prototype.slice
+            4. 通过 [].slice.call(lis) 让 lis 为数组去调用 函数对象 返回一个数组结构
+            5. 数组 调用slice 返回的是一个新数组, 原数组不改变, splice 则改变原数组的长度
+     */
+
+    let lis = document.getElementsByTagName("li");
+
+    console.log(lis.item(1)); //<li>2</li>
+
+    console.log(lis); // [li, li, li] __proto__:HTMLCollection
+
+    console.log([].slice); // function slice() { [native code] } 函数对象
+
+    console.log([].slice.call(lis)); // [li, li, li] __proto__:Array(0)
+
+    console.log(lis instanceof Array); //false
+
+    console.log([].slice.call(lis) instanceof Array); //true
+
+    /*
+        ## 得到节点类型
+     */
+
+    let ele = document.getElementsByClassName("test");
+
+    console.log(ele); // [ul.test]
+
+
+
+
+</script>
+</body>
+</html>

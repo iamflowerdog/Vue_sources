@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MrYanG</title>
+</head>
+<body>
+
+    <ul class="test">
+        456
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+<script type="text/javascript">
+
+
+    /*
+        ## 只读属性 Node.nodeType 表示的是该节点的类型。
+        #### 节点类型常量
+          1. Node.ELEMENT_NODE === 1   一个元素节点 <p> 或者 <div>
+          2. Node.TEXT_NODE === 3  Element 或者 Attr 中实际的  文字
+          3. Node.ATTRIBUTE_NODE === 2   元素 的耦合属性  ---> 已经废弃
+
+
+
+
+     */
+
+    let ele = document.getElementsByClassName("test")[0];
+
+    console.log(ele, ele.nodeType); // [ul.test] 1
+
+
+    let attr = ele.getAttributeNode("class");
+
+    console.log(attr, attr.nodeType); //class="test" 2
+
+    let text = ele.firstChild;
+
+    console.log(text, text.nodeType); // 换行 和 456 文本  3
+
+
+
+
+</script>
+</body>
+</html>

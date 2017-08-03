@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MrYanG</title>
+</head>
+<body>
+
+    <ul id="test">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+
+<script type="text/javascript">
+
+    /*
+        1. docFragment 是一个对空文档片段 DocumentFragment 对象的引用。
+        2. DocumentFragments 是DOM节点，他不是DOM树的一部分
+
+     */
+
+    let fragment = document.createDocumentFragment();
+
+    let ul = document.getElementById('test');
+
+    console.log(ul, ul.firstChild); // ul.firstChild = 换行
+
+    console.log(fragment.appendChild(ul.firstChild));
+
+
+    //fragment.appendChild(ul.firstChild);
+
+
+    //console.log(ul, ul.firstChild);
+
+
+    /*let child;
+
+    while(child=ul.firstChild) {
+        fragment.appendChild(child); //appendChild():
+    }
+
+    //更新frag
+    let lis2 = fragment.children;
+    [].slice.call(lis2).forEach(function (li) {
+        li.innerHTML = 'hello frag';
+    });
+
+    ul.appendChild(fragment);*/
+
+    /*let li = document.getElementsByTagName('li');
+
+    console.log(li, li.item(0), li[0]);
+
+    li.item(2).innerHTML = "hello dota2";
+
+    li[0].innerHTML = "hello world";*/
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MrYanG</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    /*
+        1. hasOwnProperty() 不会沿着原型链去寻找属性 返回boolean值
+        2. `Object.prototype.hasOwnProperty = function(propertyName) {};`
+            @param {Object} o
+            @return {boolean}
+     */
+
+
+    function Book(_year, edition) {
+        this._year = _year;
+        this.edition = edition
+    }
+
+
+    let book = new Book(1986, 1);
+
+    Book.prototype.name = 'interstellar';
+
+    console.log(book.hasOwnProperty('_year'), book._year); //true 1986
+
+    console.log(book.hasOwnProperty('name'), book.name); //false "interstellar"
+
+
+</script>
+</body>
+</html>

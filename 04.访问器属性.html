@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MrYanG</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    /*
+        1. 访问器属性不包含数据值；包含一对 getter函数 和 setter函数 （都是可选的）
+        2. Configurable： 表示能否通过 delete 删除属性从而重新定义属性，
+                          能否修改属性的特性，或者能否把属性修改为数据属性
+        3. Enumerable： 表示能否通过 for-in 循环返回属性
+        4. [[Get]] ：在读取属性时调用的函数。默认值为 undefined 。
+        5. [[Set]] ：在写入属性时调用的函数。默认值为 undefined 。
+     */
+
+    let book = {
+        _year: 1986,
+        edition: 1
+    };
+
+    Object.defineProperty(book, 'year', {
+        get: function () {
+            console.log("get()触发了");
+            return this._year;
+        },
+        set: function (value) {
+            console.log("set()触发了");
+            if (value > 1986) {
+                this._year = value;
+                this.edition = this.edition + (value - 1986);
+            }
+        }
+    });
+
+    console.log(book);
+    console.log(book.year); // get()触发了
+
+    book.year = 1987; // set()触发了
+
+    console.log(book._year, book.edition); // 1987 2
+
+    console.log(Object.keys(book));
+
+
+</script>
+</body>
+</html>
